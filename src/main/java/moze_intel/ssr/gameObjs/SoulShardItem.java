@@ -28,7 +28,7 @@ public class SoulShardItem extends Item
     @SideOnly(Side.CLIENT)
     private IIcon unbound;
     @SideOnly(Side.CLIENT)
-    private IIcon[] icons = new IIcon[6];
+    private IIcon[] icons;
 
     public SoulShardItem()
     {
@@ -172,6 +172,7 @@ public class SoulShardItem extends Item
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public IIcon getIcon(ItemStack stack, int pass)
     {
         if (!Utils.isShardBound(stack))
@@ -187,6 +188,8 @@ public class SoulShardItem extends Item
     public void registerIcons(IIconRegister register)
     {
         unbound = register.registerIcon("ssr:unbound");
+
+        icons = new IIcon[6];
 
         for (int i = 0; i <= 5; i++)
         {

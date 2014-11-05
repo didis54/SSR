@@ -26,7 +26,7 @@ import java.util.Random;
 public class SoulCageBlock extends Block implements ITileEntityProvider
 {
     @SideOnly(Side.CLIENT)
-    private IIcon[] icons = new IIcon[3];
+    private IIcon[] icons;
 
     public SoulCageBlock()
     {
@@ -161,6 +161,7 @@ public class SoulCageBlock extends Block implements ITileEntityProvider
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta)
     {
         ForgeDirection dir = ForgeDirection.getOrientation(side);
@@ -183,6 +184,8 @@ public class SoulCageBlock extends Block implements ITileEntityProvider
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
+        icons = new IIcon[3];
+
         for (int i = 0; i < 3; i++)
         {
             icons[i] = iconRegister.registerIcon("ssr:cage_" + i);

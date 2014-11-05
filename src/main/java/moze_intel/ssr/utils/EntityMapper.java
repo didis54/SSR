@@ -31,16 +31,6 @@ public final class EntityMapper
                 continue;
             }
 
-            try
-            {
-                entry.getKey().getConstructor(World.class);
-            }
-            catch (NoSuchMethodException e)
-            {
-                SSRLogger.logFatal("Skipped mapping for " + entry.getValue() + ": no default entity constructor visible.");
-                continue;
-            }
-
             if (EntityLiving.class.isAssignableFrom(entry.getKey()))
             {
                 VALID_ENTITIES.add(entry.getValue());
